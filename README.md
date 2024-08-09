@@ -12,44 +12,48 @@ Age: The age of individuals in the dataset ranges from 18 to 64 years.
 
 Children: The number of children covered under the insurance policy ranges from 0 to 5.
 
+BMI: The most common BMI is 28-30
 
-### Forest Regressor Model
+Sex: The distribution seems to be around 54% male, 46% female
 
-|   Original Values |   Predicted Values (Initial) |
-|------------------:|-----------------------------:|
-|           9095.07 |                      9474.09 |
-|           5272.18 |                      5723.26 |
-|          29331    |                     28266.1  |
-|           9301.89 |                     11309    |
-|          33750.3  |                     34744.8  |
+Charges: Most common charge amount is ~ 5k
 
-### Grid Search
+### Model Predictions
 
-|   Original Values |   Predicted Values (GridSearchCV) |
-|------------------:|----------------------------------:|
-|           9095.07 |                          10043.3  |
-|           5272.18 |                           5790.37 |
-|          29331    |                          27123    |
-|           9301.89 |                          10382    |
-|          33750.3  |                          34715.2  |
-
-### Randomized Search
-
-|   Original Values |   Predicted Values (RandomizedSearchCV) |
-|------------------:|----------------------------------------:|
-|           9095.07 |                                10117.1  |
-|           5272.18 |                                 5819.87 |
-|          29331    |                                27185.9  |
-|           9301.89 |                                10196.2  |
-|          33750.3  |                                34831.8  |
+|   Original Values |   Predicted (Initial) |   Predicted (GridSearchCV) |   Predicted (RandomizedSearchCV) |
+|------------------:|----------------------:|---------------------------:|---------------------------------:|
+|           9095.07 |               9101.46 |                   10306.1  |                         10263.4  |
+|           5272.18 |               5568.86 |                    5833.43 |                          5796.24 |
+|          29331    |              27929.1  |                   27360.6  |                         27294.6  |
+|           9301.89 |              12174.8  |                   10208.6  |                         10538.8  |
+|          33750.3  |              35036.5  |                   34799    |                         34834.2  |
 
 ### Model Evaluations
 
 | Model                                    |   Mean Squared Error |   R-squared |
 |:-----------------------------------------|---------------------:|------------:|
-| Initial RandomForestRegressor            |          2.40173e+07 |    0.845298 |
-| GridSearchCV RandomForestRegressor       |          2.09626e+07 |    0.864974 |
-| RandomizedSearchCV RandomForestRegressor |          2.01338e+07 |    0.870313 |
+| Initial RandomForestRegressor            |          2.47379e+07 |    0.840656 |
+| GridSearchCV RandomForestRegressor       |          2.08331e+07 |    0.865808 |
+| RandomizedSearchCV RandomForestRegressor |          2.0245e+07  |    0.869596 |
 
 
 ![image](https://github.com/user-attachments/assets/720b5c15-6bd2-4f20-895a-bf616cfa75c7)
+
+
+### Synthetic Data Generation Model Predictions
+
+|   Original Values (Synthetic) |   Predicted (Initial) |   Predicted (GridSearchCV) |   Predicted (RandomizedSearchCV) |
+|------------------------------:|----------------------:|---------------------------:|---------------------------------:|
+|                      36219.4  |              36463    |                   36353.9  |                         36335.3  |
+|                      13831.1  |              13976.8  |                   13816.2  |                         13834.6  |
+|                       9964.06 |               9964.06 |                    9964.06 |                          9964.06 |
+|                       7742.11 |               7742.11 |                    7769.73 |                          7822.11 |
+|                      18223.5  |              18189.3  |                   18223.5  |                         18221.7  |
+
+| Model                                                |   Mean Squared Error |   R-squared |
+|:-----------------------------------------------------|---------------------:|------------:|
+| Initial RandomForestRegressor (Synthetic)            |               793657 |    0.994514 |
+| GridSearchCV RandomForestRegressor (Synthetic)       |               781592 |    0.994598 |
+| RandomizedSearchCV RandomForestRegressor (Synthetic) |               775881 |    0.994637 |
+
+![image](https://github.com/user-attachments/assets/06dede5c-9ec0-4160-b951-c99258c485cc)
